@@ -2,91 +2,74 @@
 
 import { profile } from "@/lib/data";
 import { Reveal } from "@/components/reveal";
-import { ArrowUpRight, Mail, MapPin, Linkedin, FileDown } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin, MapPin, FileDown } from "lucide-react";
 
 export function Contact() {
   return (
     <section
       id="contact"
-      className="relative px-6 lg:px-12 py-24 md:py-40 border-t border-ink-700 overflow-hidden"
+      className="relative bg-block-ink text-cream-50 py-24 md:py-40 px-6 md:px-12 overflow-hidden"
     >
-      {/* Background atmosphere */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 50% 60% at 80% 50%, rgba(200,169,110,0.08), transparent 70%)",
-        }}
-      />
-
-      <div className="relative max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto relative">
         <Reveal>
-          <div className="mono text-[10px] tracking-[0.3em] uppercase text-gold mb-8">
-            — Chapter 04 / Get in touch
-          </div>
+          <div className="eyebrow text-cream-100/60 mb-6">— Contact</div>
         </Reveal>
 
         <Reveal delay={100}>
-          <h2 className="display text-5xl md:text-8xl lg:text-[8rem] leading-[0.95] font-light tracking-[-0.03em] text-ink-100">
-            Let&apos;s build
+          <h2 className="h-display max-w-5xl">
+            Let&apos;s build{" "}
+            <span className="display italic text-cream-100/70">something</span>
             <br />
-            <span className="italic text-ink-200">something</span>
-            <br />
-            <span className="text-gold">worth shipping.</span>
+            worth shipping.
           </h2>
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="mt-10 text-ink-300 text-lg md:text-xl max-w-2xl leading-relaxed font-light">
-            Open to conversations on data governance, consumer engagement, AI in luxury,
-            digital transformation — or to advisory and speaking opportunities.
+          <p className="mt-10 md:mt-12 text-lg md:text-xl text-cream-100/70 max-w-2xl leading-relaxed">
+            Open to conversations on data governance, consumer engagement,
+            AI in luxury, digital transformation — or to advisory and
+            speaking opportunities.
           </p>
         </Reveal>
 
         {/* Action grid */}
-        <div className="mt-16 md:mt-20 grid md:grid-cols-12 gap-6">
+        <div className="mt-16 md:mt-20 grid md:grid-cols-12 gap-5 md:gap-6">
+          {/* Primary email card */}
           <Reveal delay={300} className="md:col-span-7">
             <a
               href={`mailto:${profile.email}`}
-              className="group block border border-ink-700 hover:border-gold transition-colors p-8 md:p-10 bg-ink-800/30 hover:bg-ink-800/60"
+              className="group block h-full bg-cream-50 text-ink rounded-3xl p-8 md:p-10 transition-all duration-500 hover:bg-accent hover:text-cream-50"
             >
-              <div className="flex items-start justify-between gap-6">
-                <div>
-                  <div className="mono text-[10px] tracking-[0.3em] uppercase text-gold mb-3">
-                    — Primary
+              <div className="flex items-start justify-between gap-6 h-full">
+                <div className="flex-1">
+                  <div className="eyebrow opacity-60 mb-4">Primary</div>
+                  <div className="flex items-center gap-3 mb-3">
+                    <Mail className="w-5 h-5" />
+                    <span className="text-sm font-medium tracking-snug">Email</span>
                   </div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Mail className="w-5 h-5 text-ink-300 group-hover:text-gold transition-colors" />
-                    <span className="mono text-[11px] tracking-[0.2em] uppercase text-ink-300">
-                      Email
-                    </span>
-                  </div>
-                  <div className="display text-2xl md:text-3xl text-ink-100 font-light mt-2 break-all">
+                  <div className="h-block break-all leading-tight">
                     {profile.email}
                   </div>
                 </div>
-                <ArrowUpRight className="w-6 h-6 text-ink-400 group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all flex-shrink-0" />
+                <ArrowUpRight className="w-7 h-7 flex-shrink-0 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
             </a>
           </Reveal>
 
-          <div className="md:col-span-5 grid grid-cols-1 gap-6">
+          <div className="md:col-span-5 grid grid-cols-1 gap-5 md:gap-6">
             <Reveal delay={400}>
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block border border-ink-700 hover:border-gold transition-colors p-6 bg-ink-800/30 hover:bg-ink-800/60"
+                className="group block bg-cream-100/[0.07] border border-cream-100/15 rounded-3xl p-6 md:p-7 transition-all duration-500 hover:bg-cream-100/[0.12] hover:border-cream-100/30"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Linkedin className="w-4 h-4 text-ink-300 group-hover:text-gold transition-colors" />
-                    <span className="mono text-[11px] tracking-[0.2em] uppercase text-ink-200 group-hover:text-ink-100 transition-colors">
-                      LinkedIn
-                    </span>
+                    <Linkedin className="w-5 h-5" />
+                    <span className="text-base font-medium tracking-snug">LinkedIn</span>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-ink-400 group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  <ArrowUpRight className="w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </a>
             </Reveal>
@@ -96,33 +79,26 @@ export function Contact() {
                 href="/cv-gonzalo-viladomiu.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block border border-ink-700 hover:border-gold transition-colors p-6 bg-ink-800/30 hover:bg-ink-800/60"
+                className="group block bg-cream-100/[0.07] border border-cream-100/15 rounded-3xl p-6 md:p-7 transition-all duration-500 hover:bg-cream-100/[0.12] hover:border-cream-100/30"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <FileDown className="w-4 h-4 text-ink-300 group-hover:text-gold transition-colors" />
-                    <span className="mono text-[11px] tracking-[0.2em] uppercase text-ink-200 group-hover:text-ink-100 transition-colors">
-                      Download CV
-                    </span>
+                    <FileDown className="w-5 h-5" />
+                    <span className="text-base font-medium tracking-snug">Download CV</span>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-ink-400 group-hover:text-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                  <ArrowUpRight className="w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </div>
               </a>
             </Reveal>
 
             <Reveal delay={600}>
-              <div className="border border-ink-700 p-6 bg-ink-800/30">
+              <div className="bg-cream-100/[0.07] border border-cream-100/15 rounded-3xl p-6 md:p-7">
                 <div className="flex items-center gap-3 mb-2">
-                  <MapPin className="w-4 h-4 text-ink-300" />
-                  <span className="mono text-[11px] tracking-[0.2em] uppercase text-ink-300">
-                    Based in
-                  </span>
+                  <MapPin className="w-5 h-5" />
+                  <span className="text-base font-medium tracking-snug">Based in</span>
                 </div>
-                <div className="text-ink-100 text-base font-light mt-1">
-                  Barcelona, Spain
-                </div>
-                <div className="text-ink-400 text-sm font-light">
-                  Available across Europe
+                <div className="text-cream-100/80 text-sm mt-1">
+                  Barcelona, Spain · Available across Europe
                 </div>
               </div>
             </Reveal>
@@ -135,18 +111,18 @@ export function Contact() {
 
 export function Footer() {
   return (
-    <footer className="relative px-6 lg:px-12 py-12 border-t border-ink-700">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 mono text-[10px] tracking-[0.25em] uppercase text-ink-400">
-        <div>
+    <footer className="bg-block-ink text-cream-100/50 border-t border-cream-100/10 py-10 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-6 text-xs md:text-sm">
+        <div className="font-medium">
           © {new Date().getFullYear()} Gonzalo Viladomiu Claraso
         </div>
-        <div className="md:text-center text-ink-300">
-          — Crafted with intent in Barcelona —
+        <div className="md:text-center display italic">
+          Crafted with intent in Barcelona.
         </div>
         <div className="md:text-right">
           <a
             href="#top"
-            className="hover:text-gold transition-colors link-underline"
+            className="hover:text-cream-50 transition-colors"
           >
             Back to top ↑
           </a>

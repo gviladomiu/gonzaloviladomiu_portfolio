@@ -5,33 +5,16 @@ import { cn } from "@/lib/utils";
 
 const sections = [
   { id: "work", label: "Work" },
-  { id: "focus", label: "Focus" },
-  { id: "background", label: "Background" },
+  { id: "thinking", label: "Thinking" },
+  { id: "story", label: "Story" },
   { id: "contact", label: "Contact" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string>("");
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setScrolled(y > 24);
-      setProgress(h > 0 ? (y / h) * 100 : 0);
-
-      // Determine active section
-      for (const s of [...sections].reverse()) {
-        const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top < 120) {
-          setActive(s.id);
-          return;
-        }
-      }
-      setActive("");
-    };
+    const onScroll = () => setScrolled(window.scrollY > 32);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -41,34 +24,30 @@ export function Nav() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-ink-900/80 backdrop-blur-md border-b border-ink-700/50"
-          : "bg-transparent"
+        scrolled ? "py-3" : "py-6"
       )}
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+      <div
+        className={cn(
+          "mx-auto transition-all duration-500 flex items-center justify-between px-5",
+          scrolled
+            ? "max-w-[680px] bg-cream-50/85 backdrop-blur-xl border border-cream-200 rounded-full py-2.5"
+            : "max-w-6xl py-2"
+        )}
+      >
         <a
           href="#top"
-          className="flex items-center gap-2 group"
-          aria-label="Home"
+          className="flex items-center gap-2 font-medium text-[15px] tracking-snug text-ink"
         >
-          <span className="mono text-[10px] tracking-[0.3em] text-ink-300 group-hover:text-gold transition-colors">
-            GV
-          </span>
-          <span className="block h-px w-6 bg-ink-500 group-hover:bg-gold group-hover:w-10 transition-all duration-500" />
+          <span className="display italic text-xl leading-none">Gonzalo Viladomiu</span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {sections.map((s) => (
             <a
               key={s.id}
               href={`#${s.id}`}
-              className={cn(
-                "mono text-[10px] tracking-[0.25em] uppercase transition-colors",
-                active === s.id
-                  ? "text-gold"
-                  : "text-ink-300 hover:text-ink-100"
-              )}
+              className="text-[13px] font-medium tracking-snug text-ink-500 hover:text-ink transition-colors"
             >
               {s.label}
             </a>
@@ -77,14 +56,14 @@ export function Nav() {
 
         <a
           href="mailto:gonzaloviladomiu@gmail.com"
-          className="mono text-[10px] tracking-[0.25em] uppercase text-ink-100 link-underline hidden sm:inline-block"
+          className={cn(
+            "text-[13px] font-medium tracking-snug px-4 py-2 rounded-full transition-all",
+            "bg-ink text-cream-50 hover:bg-ink-700"
+          )}
         >
           Get in touch
         </a>
       </div>
-
-      {/* Scroll progress hairline */}
-      <div className="absolute bottom-0 left-0 h-px bg-gold/70" style={{ width: `${progress}%` }} />
     </header>
   );
 }

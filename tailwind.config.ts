@@ -8,55 +8,59 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: {
-          50: "#F5F2EC",
-          100: "#E8E0D4",
-          200: "#C8B8A8",
-          300: "#9A8A7A",
-          400: "#6A5A4A",
-          500: "#3A2A1A",
-          600: "#1A1208",
-          700: "#0E0C08",
-          800: "#080806",
-          900: "#0A0A0A",
+        cream: {
+          50: "#FBFAF7",
+          100: "#F4F1EA",
+          200: "#E8E2D5",
         },
-        gold: {
-          DEFAULT: "#C8A96E",
-          soft: "#D9C19A",
-          muted: "#9A8A6E",
-          dark: "#7A6A4A",
+        ink: {
+          DEFAULT: "#0E0E0C",
+          900: "#0E0E0C",
+          700: "#28261F",
+          500: "#56524A",
+          400: "#7A7568",
+          300: "#9E9886",
+        },
+        block: {
+          peach: "#F4D5C5",
+          sand:  "#E9DDC2",
+          olive: "#3D4029",
+          rose:  "#EDD6D8",
+          sky:   "#CFE0E5",
+          ink:   "#0E0E0C",
+        },
+        accent: {
+          DEFAULT: "#C8462C",
+          dark: "#9E3520",
         },
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
-        sans: ["var(--font-inter-tight)", "system-ui", "sans-serif"],
+        display: ["var(--font-instrument)", "Georgia", "serif"],
+        sans: ["var(--font-geist)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
       },
       letterSpacing: {
-        widest: "0.25em",
+        tightest: "-0.04em",
+        tighter: "-0.03em",
+        snug: "-0.02em",
       },
       animation: {
-        "fade-up": "fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        "fade-in": "fadeIn 1s ease forwards",
-        "scale-line": "scaleLine 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        "shimmer": "shimmer 3s ease-in-out infinite",
+        "fade-up": "fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "fade-in": "fadeIn 1.2s ease forwards",
+        "marquee": "marquee 35s linear infinite",
       },
       keyframes: {
         fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "0%": { opacity: "0", transform: "translateY(28px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
-        scaleLine: {
-          "0%": { transform: "scaleX(0)" },
-          "100%": { transform: "scaleX(1)" },
-        },
-        shimmer: {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },
