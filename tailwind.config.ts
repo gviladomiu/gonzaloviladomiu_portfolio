@@ -8,55 +8,52 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: {
-          50: "#F5F2EC",
-          100: "#E8E0D4",
-          200: "#C8B8A8",
-          300: "#9A8A7A",
-          400: "#6A5A4A",
-          500: "#3A2A1A",
-          600: "#1A1208",
-          700: "#0E0C08",
-          800: "#080806",
-          900: "#0A0A0A",
+        // Off-white surface + monochrome grays + single accent
+        surface: {
+          DEFAULT: "#FAFAF9",  // page bg (Hero, Education)
+          alt: "#E8E8E8",      // alt section bg (Experience, Stack)
+          panel: "#FFFFFF",    // cards
         },
-        gold: {
-          DEFAULT: "#C8A96E",
-          soft: "#D9C19A",
-          muted: "#9A8A6E",
-          dark: "#7A6A4A",
+        ink: {
+          DEFAULT: "#0A0A0A",
+          900: "#0A0A0A",
+          800: "#1A1A1A",
+          700: "#2E2E2E",
+          600: "#4A4A4A",
+          500: "#6B6B6B",
+          400: "#8B8B8B",
+          300: "#B0B0B0",
+          200: "#D4D4D4",
+          100: "#E8E8E8",
+          50:  "#F2F2F2",
+        },
+        accent: {
+          DEFAULT: "#2596BE",
+          dark: "#1F7FA3",
+          soft: "#E5F3F8",
         },
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
-        sans: ["var(--font-inter-tight)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains)", "ui-monospace", "monospace"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       letterSpacing: {
-        widest: "0.25em",
+        snug: "-0.018em",
+        tight: "-0.025em",
+        tighter: "-0.035em",
       },
       animation: {
-        "fade-up": "fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        "fade-in": "fadeIn 1s ease forwards",
-        "scale-line": "scaleLine 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards",
-        "shimmer": "shimmer 3s ease-in-out infinite",
+        "fade-up": "fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+        "fade-in": "fadeIn 0.8s ease forwards",
       },
       keyframes: {
         fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "0%": { opacity: "0", transform: "translateY(16px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
-        },
-        scaleLine: {
-          "0%": { transform: "scaleX(0)" },
-          "100%": { transform: "scaleX(1)" },
-        },
-        shimmer: {
-          "0%, 100%": { opacity: "0.6" },
-          "50%": { opacity: "1" },
         },
       },
     },
