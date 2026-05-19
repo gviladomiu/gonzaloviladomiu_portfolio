@@ -1,90 +1,141 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const sections = [
-  { id: "work", label: "Work" },
-  { id: "focus", label: "Focus" },
-  { id: "background", label: "Background" },
+  { id: "top", label: "Home" },
+  { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "stack", label: "Stack" },
   { id: "contact", label: "Contact" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string>("");
-  const [progress, setProgress] = useState(0);
+  const [activeId, setActiveId] = useState<string>("top");
+
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const navListRef = useRef<HTMLElement | null>(null);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
 
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setScrolled(y > 24);
-      setProgress(h > 0 ? (y / h) * 100 : 0);
-
-      // Determine active section
-      for (const s of [...sections].reverse()) {
+      setScrolled(window.scrollY > 32);
+      const offset = 120;
+      let current = "top";
+      for (const s of sections) {
         const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top < 120) {
-          setActive(s.id);
-          return;
-        }
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= offset) current = s.id;
       }
-      setActive("");
+      setActiveId(current);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const measure = () => {
+      const link = linkRefs.current[activeId];
+      const list = navListRef.current;
+      if (!link || !list) {
+        setIndicator((i) => ({ ...i, opacity: 0 }));
+        return;
+      }
+      const linkRect = link.getBoundingClientRect();
+      const listRect = list.getBoundingClientRect();
+      setIndicator({
+        left: linkRect.left - listRect.left,
+        width: linkRect.width,
+        opacity: 1,
+      });
+    };
+    measure();
+    const t = setTimeout(measure, 520);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", measure);
+    };
+  }, [activeId, scrolled]);
+
+  const visibleSections = sections.filter((s) => s.id !== "top");
+
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-ink-900/80 backdrop-blur-md border-b border-ink-700/50"
-          : "bg-transparent"
+        scrolled ? "py-3" : "py-6"
       )}
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+      <div
+        className={cn(
+          "mx-auto transition-all duration-500 flex items-center gap-4 md:gap-6 px-5",
+          scrolled
+            ? "max-w-[760px] bg-surface/85 backdrop-blur-xl border border-ink-100 rounded-full py-2.5 shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
+            : "max-w-6xl py-2"
+        )}
+      >
         <a
           href="#top"
-          className="flex items-center gap-2 group"
-          aria-label="Home"
+          className="flex items-baseline gap-2 text-[14px] font-medium tracking-snug text-ink whitespace-nowrap flex-shrink-0"
+          aria-label="Back to top"
         >
-          <span className="mono text-[10px] tracking-[0.3em] text-ink-300 group-hover:text-gold transition-colors">
-            GV
+          Gonzalo Viladomiu
+          <span
+            className={cn(
+              "text-ink-400 transition-opacity duration-300 hidden md:inline",
+              scrolled ? "opacity-0 md:hidden" : "opacity-100"
+            )}
+          >
+            / Technology Manager
           </span>
-          <span className="block h-px w-6 bg-ink-500 group-hover:bg-gold group-hover:w-10 transition-all duration-500" />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
-          {sections.map((s) => (
+        <nav
+          ref={navListRef}
+          className="hidden md:flex items-center gap-7 flex-1 justify-center relative"
+          aria-label="Main navigation"
+        >
+          {visibleSections.map((s) => (
             <a
               key={s.id}
               href={`#${s.id}`}
+              ref={(el) => {
+                linkRefs.current[s.id] = el;
+              }}
               className={cn(
-                "mono text-[10px] tracking-[0.25em] uppercase transition-colors",
-                active === s.id
-                  ? "text-gold"
-                  : "text-ink-300 hover:text-ink-100"
+                "text-[13px] font-medium transition-colors whitespace-nowrap relative",
+                activeId === s.id ? "text-ink" : "text-ink-500 hover:text-ink"
               )}
+              aria-current={activeId === s.id ? "true" : undefined}
             >
               {s.label}
             </a>
           ))}
+
+          <span
+            aria-hidden="true"
+            className="absolute -bottom-1.5 h-px bg-accent transition-all duration-500 ease-out pointer-events-none"
+            style={{
+              left: indicator.left,
+              width: indicator.width,
+              opacity: indicator.opacity,
+            }}
+          />
         </nav>
 
+        {/* Email as a plain text link — no pill, no marketing CTA */}
         <a
           href="mailto:gonzaloviladomiu@gmail.com"
-          className="mono text-[10px] tracking-[0.25em] uppercase text-ink-100 link-underline hidden sm:inline-block"
+          className="text-[13px] font-medium text-ink hover:text-accent transition-colors whitespace-nowrap flex-shrink-0"
         >
-          Get in touch
+          Email →
         </a>
       </div>
-
-      {/* Scroll progress hairline */}
-      <div className="absolute bottom-0 left-0 h-px bg-gold/70" style={{ width: `${progress}%` }} />
     </header>
   );
 }

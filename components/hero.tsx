@@ -1,120 +1,100 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { profile } from "@/lib/data";
+import { profile, metrics } from "@/lib/data";
+import { ArrowUpRight } from "lucide-react";
 
 export function Hero() {
-  const [time, setTime] = useState("");
-
-  useEffect(() => {
-    const update = () => {
-      const now = new Date();
-      const opts: Intl.DateTimeFormatOptions = {
-        timeZone: "Europe/Madrid",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-      };
-      setTime(now.toLocaleTimeString("en-GB", opts));
-    };
-    update();
-    const id = setInterval(update, 60_000);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <section
       id="top"
-      className="relative min-h-screen flex flex-col justify-between pt-32 pb-12 px-6 lg:px-12 overflow-hidden"
+      className="relative pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-10 grid-bg"
     >
-      {/* Atmospheric gradient backdrop */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 50% at 20% 30%, rgba(200,169,110,0.10) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 90% 80%, rgba(200,169,110,0.06) 0%, transparent 60%)",
-        }}
-      />
-
-      {/* Top meta bar */}
-      <div className="relative max-w-6xl mx-auto w-full grid grid-cols-2 md:grid-cols-4 gap-6 mono text-[10px] tracking-[0.25em] uppercase text-ink-300 animate-fade-in">
-        <div>
-          <div className="text-ink-400 mb-1">— Profile</div>
-          <div className="text-ink-100">N°·001</div>
-        </div>
-        <div>
-          <div className="text-ink-400 mb-1">— Based in</div>
-          <div className="text-ink-100">Barcelona / 41.4°N</div>
-        </div>
-        <div>
-          <div className="text-ink-400 mb-1">— Status</div>
-          <div className="text-gold flex items-center gap-2">
-            <span className="block h-1.5 w-1.5 rounded-full bg-gold animate-shimmer" />
-            In motion
-          </div>
-        </div>
-        <div>
-          <div className="text-ink-400 mb-1">— Local time</div>
-          <div className="text-ink-100">{time || "—"}</div>
-        </div>
-      </div>
-
-      {/* Display headline */}
-      <div className="relative max-w-6xl mx-auto w-full mt-16 md:mt-24">
+      <div className="max-w-6xl mx-auto">
+        {/* Quiet status line — no pulsing dot, no inbound signaling */}
         <div
-          className="mono text-[10px] tracking-[0.4em] uppercase text-gold mb-8 animate-fade-up"
-          style={{ animationDelay: "100ms", opacity: 0 }}
+          className="eyebrow mb-10 md:mb-14 animate-fade-in"
+          style={{ animationDelay: "60ms", opacity: 0 }}
         >
-          — Technology, data &amp; consumer engagement
+          Currently at PUIG · Barcelona
         </div>
 
+        {/* Direct, declarative headline */}
         <h1
-          className="display text-[12vw] md:text-[8.5vw] lg:text-[7.5vw] leading-[0.92] font-light tracking-[-0.03em] text-ink-100 animate-fade-up"
-          style={{ animationDelay: "200ms", opacity: 0 }}
+          className="h-display text-ink max-w-4xl animate-fade-up"
+          style={{ animationDelay: "120ms", opacity: 0 }}
         >
-          Gonzalo
+          Gonzalo Viladomiu.
           <br />
-          <span className="italic font-extralight text-ink-200">Viladomiu.</span>
+          Technology Manager at PUIG.
+          <br />
+          <span className="text-ink-500">
+            Consumer engagement, data and AI.
+          </span>
         </h1>
 
-        <div
-          className="mt-10 md:mt-14 grid md:grid-cols-12 gap-6 animate-fade-up"
-          style={{ animationDelay: "400ms", opacity: 0 }}
-        >
-          <div className="md:col-span-1 hidden md:flex justify-end pt-2">
-            <span className="block h-px w-12 bg-gold mt-3" />
-          </div>
-          <p className="md:col-span-8 text-lg md:text-xl text-ink-200 leading-relaxed max-w-2xl font-light">
-            Currently <span className="text-gold">Technology Manager</span> at PUIG —
-            leading Consumer Engagement Technology across a global luxury group
-            present in <span className="text-ink-100">150+ countries</span>.
-          </p>
-          <div className="md:col-span-3 flex md:justify-end mono text-[10px] tracking-[0.25em] uppercase text-ink-400 md:text-right pt-2">
-            <div>
-              <div className="text-ink-100">2016 →</div>
-              <div>~10 yrs in tech</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom — tagline + scroll cue */}
-      <div className="relative max-w-6xl mx-auto w-full mt-20 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <p
-          className="display text-ink-300 text-2xl md:text-3xl leading-snug italic max-w-xl font-extralight animate-fade-up"
-          style={{ animationDelay: "600ms", opacity: 0 }}
+          className="mt-10 md:mt-14 text-lg md:text-xl text-ink-700 max-w-2xl leading-relaxed animate-fade-up"
+          style={{ animationDelay: "240ms", opacity: 0 }}
         >
-          "{profile.tagline}"
+          {profile.about}
         </p>
 
-        <a
-          href="#work"
-          className="group mono text-[10px] tracking-[0.3em] uppercase text-ink-300 hover:text-gold transition-colors flex items-center gap-3"
+        {/* Trajectory line — explicit CIO orientation, kept understated */}
+        <p
+          className="mt-6 text-sm md:text-base text-ink-500 max-w-2xl leading-relaxed animate-fade-up"
+          style={{ animationDelay: "300ms", opacity: 0 }}
         >
-          Scroll
-          <span className="block h-px w-10 bg-ink-400 group-hover:w-16 group-hover:bg-gold transition-all duration-500" />
-        </a>
+          Building toward CIO across data, AI and consumer technology.
+        </p>
+
+        <div
+          className="mt-10 flex flex-wrap gap-3 animate-fade-up"
+          style={{ animationDelay: "360ms", opacity: 0 }}
+        >
+          <a href="#experience" className="btn">
+            View experience
+            <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+          </a>
+          <a
+            href="/cv-gonzalo-viladomiu.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-secondary"
+          >
+            Download CV
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Metrics band — surfaced as a standalone block right after the hero
+export function Metrics() {
+  return (
+    <section
+      className="relative bg-ink text-surface px-6 md:px-10 py-14 md:py-20"
+      aria-labelledby="metrics-heading"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div id="metrics-heading" className="eyebrow text-ink-400 mb-8 md:mb-10">
+          By the numbers
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ink-700">
+          {metrics.map((m, i) => (
+            <div
+              key={i}
+              className="bg-ink p-6 md:p-8 flex flex-col justify-between min-h-[140px]"
+            >
+              <div className="text-4xl md:text-6xl font-medium tracking-tighter text-surface leading-none">
+                {m.value}
+              </div>
+              <div className="mt-4 text-sm md:text-base text-ink-300 leading-snug max-w-[18ch]">
+                {m.label}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
