@@ -20,6 +20,7 @@ export const profile = {
 export const experience = [
   {
     company: "PUIG",
+    logo: "/logos/puig.svg",
     role: "Consumer Engagement Technology Manager",
     period: "Nov 2024 — Present",
     location: "Barcelona, Spain",
@@ -41,6 +42,7 @@ export const experience = [
   },
   {
     company: "Deloitte",
+    logo: "/logos/deloitte.svg",
     role: "IT Consultant",
     period: "May 2022 — Nov 2024",
     location: "Barcelona, Spain",
@@ -59,6 +61,7 @@ export const experience = [
   },
   {
     company: "Unitronics",
+    logo: "/logos/unitronics.svg",
     role: "Network Analyst",
     period: "Jan 2018 — Apr 2022",
     location: "Barcelona, Spain",
@@ -77,6 +80,7 @@ export const experience = [
   },
   {
     company: "Fira Barcelona",
+    logo: "/logos/fira-barcelona.svg",
     role: "Network Technician",
     period: "Feb 2016 — Dec 2017",
     location: "Barcelona, Spain",
