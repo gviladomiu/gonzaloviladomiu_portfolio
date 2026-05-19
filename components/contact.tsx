@@ -14,7 +14,7 @@ export function Contact() {
         <Reveal>
           <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
             <div className="md:col-span-4">
-              <div className="eyebrow text-ink-400 mb-3">— Contact</div>
+              <div className="eyebrow text-ink-400 mb-3">Contact</div>
               <h2 className="h-section">Get in touch</h2>
             </div>
             <div className="md:col-span-7 md:col-start-6">
@@ -26,14 +26,39 @@ export function Contact() {
           </div>
         </Reveal>
 
-        {/* Contact entries as records */}
         <Reveal>
           <div className="border-t border-ink-700">
             {[
-              { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
-              { label: "LinkedIn", value: "linkedin.com/in/gviladomiu", href: profile.linkedin },
-              { label: "CV", value: "Download PDF", href: "/cv-gonzalo-viladomiu.pdf" },
-              { label: "Location", value: "Barcelona, Spain · Available across Europe", href: null },
+              {
+                label: "Email",
+                value: profile.email,
+                href: `mailto:${profile.email}`,
+                external: false,
+              },
+              {
+                label: "LinkedIn",
+                value: "linkedin.com/in/gviladomiu",
+                href: profile.linkedin,
+                external: true,
+              },
+              {
+                label: "CV",
+                value: "Download PDF",
+                href: "/cv-gonzalo-viladomiu.pdf",
+                external: true,
+              },
+              {
+                label: "Location",
+                value: "Barcelona, Spain",
+                href: null,
+                external: false,
+              },
+              {
+                label: "Languages",
+                value: profile.languages.join(" · "),
+                href: null,
+                external: false,
+              },
             ].map((row, i) => (
               <div
                 key={i}
@@ -46,12 +71,15 @@ export function Contact() {
                   {row.href ? (
                     <a
                       href={row.href}
-                      target={row.href.startsWith("http") ? "_blank" : undefined}
-                      rel="noopener noreferrer"
+                      target={row.external ? "_blank" : undefined}
+                      rel={row.external ? "noopener noreferrer" : undefined}
                       className="group inline-flex items-center gap-2 text-lg md:text-xl font-medium tracking-snug text-surface hover:text-accent transition-colors"
                     >
                       {row.value}
-                      <ArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      <ArrowUpRight
+                        aria-hidden="true"
+                        className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                      />
                     </a>
                   ) : (
                     <span className="text-lg md:text-xl font-medium tracking-snug text-ink-200">

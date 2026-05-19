@@ -13,7 +13,7 @@ export function Stack() {
         <Reveal>
           <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
             <div className="md:col-span-4">
-              <div className="eyebrow mb-3">— Stack</div>
+              <div className="eyebrow mb-3">Stack</div>
               <h2 className="h-section text-ink">Tools &amp; competencies</h2>
             </div>
             <div className="md:col-span-7 md:col-start-6">
@@ -25,13 +25,12 @@ export function Stack() {
           </div>
         </Reveal>
 
-        {/* Stack grid — categorized */}
         <Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-ink-200 border border-ink-200">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ink-200 border border-ink-200">
             {stack.map((group) => (
               <div
                 key={group.category}
-                className="bg-surface p-6 md:p-7 min-h-[160px] flex flex-col"
+                className="bg-surface p-6 md:p-7 min-h-[180px] flex flex-col"
               >
                 <div className="eyebrow text-accent mb-4">{group.category}</div>
                 <ul className="space-y-1.5">
@@ -49,11 +48,10 @@ export function Stack() {
           </div>
         </Reveal>
 
-        {/* Certifications */}
         <Reveal>
           <div className="mt-20 md:mt-24 grid md:grid-cols-12 gap-8">
             <div className="md:col-span-4">
-              <div className="eyebrow mb-3">— Certifications</div>
+              <div className="eyebrow mb-3">Certifications</div>
               <p className="text-sm text-ink-500 max-w-xs leading-relaxed">
                 Salesforce stack, privacy, analytics and networking foundations.
               </p>

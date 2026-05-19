@@ -9,23 +9,29 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/gviladomiu",
   github: "https://github.com/gviladomiu",
   authorization: "European Union",
-  // Factual one-liner — no slogan, no manifesto
-  positioning:
-    "Technology Manager at PUIG. Ten years across networks, consulting and enterprise technology — building toward CIO.",
+  languages: ["Spanish (Native)", "Catalan (Native)", "English (C1)"],
   // Short factual intro used in the about block
   about:
     "I lead Consumer Engagement Technology at PUIG, covering global data governance, analytics, AI, consent and the platforms that connect every brand to its consumer. Before PUIG, I delivered CRM and digital transformation programs at Deloitte across insurance, consumer goods and hospitality, and earlier ran network operations for large-scale international events including Mobile World Congress.",
 };
 
+// Headline impact metrics — surfaced as their own band right after the hero
+export const metrics = [
+  { value: "150+", label: "Countries served at PUIG" },
+  { value: "8", label: "Global luxury brands in scope" },
+  { value: "~10", label: "Years across tech & consulting" },
+  { value: "7", label: "People max led in delivery teams" },
+];
+
 export const experience = [
   {
     company: "PUIG",
-    logo: "/logos/puig.svg",
+    logo: "/logos/puig.png",
     role: "Consumer Engagement Technology Manager",
     period: "Nov 2024 — Present",
     location: "Barcelona, Spain",
     summary:
-      "Global luxury beauty and fashion group (150+ countries). Lead data-driven consumer engagement, governance and digital transformation across brands.",
+      "Global luxury beauty and fashion group present in 150+ countries. Lead data-driven consumer engagement, governance and digital transformation across brands.",
     highlights: [
       "Lead the definition and implementation from scratch of global Data Quality frameworks and processes, including automated monitoring systems in the data mart. Built alerting mechanisms and KPI reporting (completeness, consistency, accuracy, freshness).",
       "Manage global consumer and corporate data governance across retail, marketing, sales and corporate functions, ensuring a Single Consumer View and overall data reliability.",
@@ -42,7 +48,7 @@ export const experience = [
   },
   {
     company: "Deloitte",
-    logo: "/logos/deloitte.svg",
+    logo: "/logos/deloitte.png",
     role: "IT Consultant",
     period: "May 2022 — Nov 2024",
     location: "Barcelona, Spain",
@@ -61,7 +67,7 @@ export const experience = [
   },
   {
     company: "Unitronics",
-    logo: "/logos/unitronics.svg",
+    logo: "/logos/unitronics.png",
     role: "Network Analyst",
     period: "Jan 2018 — Apr 2022",
     location: "Barcelona, Spain",
@@ -80,7 +86,7 @@ export const experience = [
   },
   {
     company: "Fira Barcelona",
-    logo: "/logos/fira-barcelona.svg",
+    logo: "/logos/fira-barcelona.png",
     role: "Network Technician",
     period: "Feb 2016 — Dec 2017",
     location: "Barcelona, Spain",
@@ -94,6 +100,7 @@ export const experience = [
   },
 ];
 
+// Compact, ranked by seniority — UPC incomplete entry removed
 export const education = [
   {
     school: "La Salle — Universitat Ramon Llull",
@@ -106,12 +113,6 @@ export const education = [
     degree: "Bachelor's in ICT Management Engineering",
     period: "2016 — 2020",
     detail: "Technology and business combined to drive innovation and digital solutions.",
-  },
-  {
-    school: "UPC — Universitat Politècnica de Catalunya",
-    degree: "Bachelor's in Audiovisual Systems Engineering (incomplete)",
-    period: "2014 — 2016",
-    detail: "Initial engineering foundation, later oriented towards business and technology integration.",
   },
 ];
 
@@ -127,7 +128,7 @@ export const certifications = [
   "Cisco CCNA 1",
 ];
 
-// Reorganized as a tech-radar style grid
+// Reorganized: spoken languages moved to profile metadata
 export const stack = [
   {
     category: "Platforms",
@@ -135,22 +136,14 @@ export const stack = [
   },
   {
     category: "Cloud & Data",
-    items: ["Google Cloud Platform", "AWS", "Data Mart", "AML / ML"],
+    items: ["Google Cloud Platform", "AWS", "Data Mart", "AML / ML", "SQL"],
   },
   {
-    category: "Governance",
-    items: ["GDPR", "CCPA", "Data Quality", "Single Consumer View"],
+    category: "Governance & Privacy",
+    items: ["GDPR", "CCPA", "Data Quality", "Single Consumer View", "Consent"],
   },
   {
     category: "Delivery",
     items: ["Agile", "PMO", "Jira", "Stakeholder Mgmt"],
-  },
-  {
-    category: "Languages",
-    items: ["R", "Java", "C", "SQL"],
-  },
-  {
-    category: "Spoken",
-    items: ["Spanish (Native)", "Catalan (Native)", "English (C1)"],
   },
 ];
