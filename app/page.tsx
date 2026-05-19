@@ -1,8 +1,8 @@
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
-import { Work } from "@/components/work";
-import { Focus } from "@/components/focus";
-import { Background } from "@/components/background";
+import { Experience } from "@/components/experience";
+import { Education } from "@/components/education";
+import { Stack } from "@/components/stack";
 import { Contact, Footer } from "@/components/contact";
 
 export default function Home() {
@@ -10,9 +10,9 @@ export default function Home() {
     <main className="relative">
       <Nav />
       <Hero />
-      <Work />
-      <Focus />
-      <Background />
+      <Experience />
+      <Education />
+      <Stack />
       <Contact />
       <Footer />
     </main>
