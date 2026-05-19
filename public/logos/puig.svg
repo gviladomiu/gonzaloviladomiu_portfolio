@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180" role="img" aria-label="PUIG logo">
+  <rect width="260" height="180" fill="none"/>
+  <g fill="none" stroke="#0A0A0A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M130 25 C118 45 112 64 116 84 C120 104 106 113 98 126 C92 136 96 154 130 154 C164 154 168 136 162 126 C154 113 140 104 144 84 C148 64 142 45 130 25Z"/>
+    <path d="M96 58 C72 44 48 46 40 62 C31 81 54 90 72 96 C95 104 101 127 84 145"/>
+    <path d="M164 58 C188 44 212 46 220 62 C229 81 206 90 188 96 C165 104 159 127 176 145"/>
+    <path d="M72 104 C54 98 40 105 37 122 C33 142 53 160 82 169 C109 178 151 178 178 169 C207 160 227 142 223 122 C220 105 206 98 188 104"/>
+  </g>
+  <circle cx="130" cy="122" r="9" fill="#0A0A0A"/>
+</svg>
