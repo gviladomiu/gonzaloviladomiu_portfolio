@@ -1,14 +1,12 @@
 # Gonzalo Viladomiu — Portfolio
 
-Personal portfolio site. Built with Next.js 14 (App Router), TypeScript and Tailwind CSS.
-Designed as an editorial, refined experience — closer to a luxury magazine than a developer template.
+Personal portfolio. Next.js 14 (App Router), TypeScript, Tailwind CSS.
 
-## Design philosophy
+## Design
 
-- **Aesthetic**: editorial luxury — dark, monochromatic, gold accents, generous whitespace.
-- **Typography**: Fraunces (display, italic-friendly), Inter Tight (UI), JetBrains Mono (technical labels).
-- **Tone**: confident, calm, ten-year senior — not bootcamp-junior.
-- **Narrative**: networks → consulting → luxury tech. Each section is a chapter.
+Monochrome system with a single cyan accent (`#2596BE`) reserved for interaction states.
+No serif display fonts, no colored blocks, no italics — just clear typographic hierarchy
+on an off-white surface. Geist Sans for text, Geist Mono for technical labels.
 
 ## Stack
 
@@ -17,70 +15,61 @@ Designed as an editorial, refined experience — closer to a luxury magazine tha
 | Framework   | Next.js 14 (App Router) |
 | Language    | TypeScript            |
 | Styling     | Tailwind CSS          |
+| Fonts       | Geist Sans + Geist Mono |
 | Icons       | lucide-react          |
-| Fonts       | Google Fonts (next/font) |
 | Deployment  | Vercel                |
 
-## Getting started
-
-```bash
-# Install
-npm install
-
-# Dev
-npm run dev
-
-# Build
-npm run build
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-## Project structure
+## Structure
 
 ```
 app/
   layout.tsx          Root layout, fonts, metadata
   page.tsx            Composes all sections
-  globals.css         Base styles, CSS vars, animations
+  globals.css         Tokens, base styles, animations
 components/
-  nav.tsx             Fixed top nav with scroll progress
-  hero.tsx            Editorial hero with live local time
-  work.tsx            Experience timeline (interactive)
-  focus.tsx           Strategic focus areas
-  background.tsx      Bio + education + skills + certs
-  contact.tsx         Contact + footer
-  reveal.tsx          Scroll-triggered fade-up wrapper
+  nav.tsx             Minimal text-only nav
+  hero.tsx            Factual headline + identifier grid
+  experience.tsx      Sticky-meta record list of roles
+  education.tsx       Academic record table
+  stack.tsx           Tech grid + certifications
+  contact.tsx         Dark contact block + footer
+  reveal.tsx          Scroll-triggered fade-up
 lib/
-  data.ts             ← Edit your CV content here
+  data.ts             ← All CV content
   utils.ts            Tailwind merge helper
-  use-in-view.ts      Intersection observer hook
+  use-in-view.ts      Intersection observer
 public/
-  cv-gonzalo-viladomiu.pdf   Add your CV here
+  cv-gonzalo-viladomiu.pdf
 ```
 
-## Updating content
+## Local
 
-All copy lives in **`lib/data.ts`** — a single source of truth.
-Edit that file, no need to touch component code unless you want to restructure layout.
+```bash
+npm install
+npm run dev   # http://localhost:3000
+npm run build
+```
 
-## Deploying to Vercel
+## Color tokens
 
-1. Push to your GitHub repo (`gviladomiu/gonzaloviladomiu_portfolio`).
-2. On [vercel.com](https://vercel.com), import the repository.
-3. Framework preset will auto-detect as Next.js — leave defaults.
-4. Deploy.
+| Token              | Hex      | Used for                |
+| ------------------ | -------- | ----------------------- |
+| `surface`          | `#FAFAF9`| Page background         |
+| `surface-alt`      | `#F2F2F0`| Education section bg    |
+| `ink`              | `#0A0A0A`| Primary text & dark CTA |
+| `ink-100/200`      |          | Hairlines, dividers     |
+| `ink-500/700`      |          | Secondary text          |
+| `accent`           | `#2596BE`| Hover, eyebrow accents, focus |
 
-For a custom domain (e.g. `gonzaloviladomiu.com`), add it under Project Settings → Domains.
+The accent is used sparingly — never as a fill, only on hover states, the status dot
+in the hero, eyebrow labels in select positions, and stack categories.
 
-## Notes
+## Content
 
-- The CV PDF should be placed at `public/cv-gonzalo-viladomiu.pdf` so the
-  "Download CV" link in the contact section works.
-- Update the OpenGraph image and favicon under `app/` and `public/` for full polish.
-- The grain texture and gold-accent glow are intentional and on-brand —
-  remove them and the design loses its character.
+All copy lives in `lib/data.ts`. Update there to keep experience, education,
+stack and certifications in sync.
 
----
+## Deploy
 
-Crafted with intent in Barcelona.
+Push to GitHub. On Vercel, import the repo (Next.js auto-detected). Add a custom
+domain under Project Settings → Domains.
