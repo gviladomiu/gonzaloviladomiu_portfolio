@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" role="img" aria-label="Unitronics logo">
+  <rect width="520" height="180" fill="none"/>
+  <g fill="#F7931E">
+    <circle cx="102" cy="42" r="8"/>
+    <circle cx="126" cy="34" r="7"/>
+    <circle cx="151" cy="42" r="7"/>
+    <circle cx="117" cy="66" r="9"/>
+    <circle cx="145" cy="68" r="8"/>
+    <circle cx="170" cy="72" r="7"/>
+    <circle cx="106" cy="94" r="10"/>
+    <circle cx="137" cy="98" r="9"/>
+    <circle cx="166" cy="102" r="8"/>
+  </g>
+  <text x="38" y="132" font-family="Georgia, 'Times New Roman', serif" font-size="70" font-weight="700" fill="#0A0A0A">unitronics</text>
+</svg>
