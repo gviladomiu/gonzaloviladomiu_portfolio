@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { experience } from "@/lib/data";
 import { Reveal } from "@/components/reveal";
 
@@ -33,8 +34,21 @@ export function Experience() {
             <Reveal key={exp.company}>
               <article className="bg-surface border border-ink-200/70 p-6 md:p-10 hover:border-ink-300 transition-colors">
                 <div className="grid md:grid-cols-12 gap-6 md:gap-10">
-                  {/* Left: meta */}
+                  {/* Left: logo + meta */}
                   <div className="md:col-span-4">
+                    {exp.logo && (
+                      <div className="relative h-16 md:h-20 w-full max-w-[220px] mb-6 flex items-center">
+                        <Image
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          width={220}
+                          height={80}
+                          className="object-contain object-left max-h-full w-auto"
+                          priority={i === 0}
+                        />
+                      </div>
+                    )}
+
                     <div className="eyebrow text-accent mb-4">
                       {String(i + 1).padStart(2, "0")} / {exp.period}
                     </div>
