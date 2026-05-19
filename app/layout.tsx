@@ -1,54 +1,19 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  axes: ["opsz", "SOFT"],
-});
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-inter-tight",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Gonzalo Viladomiu — Technology Manager, Data & Consumer Engagement",
+  title: "Gonzalo Viladomiu — Technology Manager",
   description:
-    "Technology Manager at PUIG. Building the future of consumer engagement through data, AI and digital transformation in global luxury beauty. Based in Barcelona.",
-  keywords: [
-    "Gonzalo Viladomiu",
-    "Technology Manager",
-    "PUIG",
-    "Consumer Engagement",
-    "Data Governance",
-    "Digital Transformation",
-    "CIO",
-    "Barcelona",
-  ],
+    "Technology Manager at PUIG. Consumer engagement, data governance and digital transformation across global luxury beauty.",
   authors: [{ name: "Gonzalo Viladomiu Claraso" }],
   openGraph: {
     title: "Gonzalo Viladomiu — Technology Manager",
     description:
-      "Building the future of consumer engagement through data, AI and digital transformation.",
-    url: "https://gonzaloviladomiu.com",
-    siteName: "Gonzalo Viladomiu",
+      "Consumer engagement, data governance and digital transformation across global luxury beauty.",
     locale: "en_GB",
     type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Gonzalo Viladomiu",
-    description: "Technology Manager · Data & Consumer Engagement.",
   },
 };
 
@@ -60,9 +25,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
     >
-      <body className="grain">{children}</body>
+      <body className="bg-surface text-ink antialiased">{children}</body>
     </html>
   );
 }
