@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" role="img" aria-label="Fira Barcelona logo">
+  <rect width="560" height="220" fill="none"/>
+  <g fill="#1F6FB8">
+    <path d="M210 72 L250 72 L235 132 L210 132 Z"/>
+    <path d="M260 72 L300 72 L285 132 L260 132 Z"/>
+    <path d="M170 92 L205 92 L225 132 L195 132 Z"/>
+    <path d="M305 92 L340 92 L315 132 L285 132 Z"/>
+    <path d="M140 112 L170 112 L195 132 L165 132 Z"/>
+    <path d="M340 112 L370 112 L345 132 L315 132 Z"/>
+  </g>
+  <text x="32" y="178" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="800" fill="#1F6FB8">Fira Barcelona</text>
+</svg>
