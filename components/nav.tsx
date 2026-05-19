@@ -89,12 +89,12 @@ export function Nav() {
         {/* Brand — never wraps */}
         <a
           href="#top"
-          className="flex items-baseline gap-2 text-[14px] font-bold tracking-snug text-ink whitespace-nowrap flex-shrink-0"
+          className="flex items-baseline gap-2 text-[14px] font-medium tracking-snug text-ink whitespace-nowrap flex-shrink-0"
         >
           Gonzalo Viladomiu
           <span
             className={cn(
-              "text-ink-400 transition-opacity duration-300 hidden md:inline font-bold",
+              "text-ink-400 transition-opacity duration-300 hidden md:inline",
               scrolled ? "opacity-0 md:hidden" : "opacity-100"
             )}
           >
@@ -115,7 +115,7 @@ export function Nav() {
                 linkRefs.current[s.id] = el;
               }}
               className={cn(
-                "text-[13px] font-bold transition-colors whitespace-nowrap relative",
+                "text-[13px] font-medium transition-colors whitespace-nowrap relative",
                 activeId === s.id ? "text-ink" : "text-ink-500 hover:text-ink"
               )}
             >
@@ -135,10 +135,10 @@ export function Nav() {
           />
         </nav>
 
-        {/* CTA — never shrinks, never wraps */}
+        {/* CTA — black pill block */}
         <a
           href="mailto:gonzaloviladomiu@gmail.com"
-          className="text-[13px] font-bold tracking-snug px-4 py-2 rounded-full bg-ink text-surface hover:bg-accent transition-colors whitespace-nowrap flex-shrink-0"
+          className="text-[13px] font-medium tracking-snug px-4 py-2 rounded-full bg-ink text-surface hover:bg-accent transition-colors whitespace-nowrap flex-shrink-0"
         >
           Get in touch
         </a>
