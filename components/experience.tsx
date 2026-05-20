@@ -15,7 +15,7 @@ export function Experience() {
         <Reveal>
           <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
             <div className="md:col-span-4">
-              <div className="eyebrow mb-3">— Experience</div>
+              <div className="eyebrow mb-3">Experience</div>
               <h2 className="h-section text-ink">Trajectory</h2>
             </div>
             <div className="md:col-span-7 md:col-start-6">
@@ -28,44 +28,45 @@ export function Experience() {
           </div>
         </Reveal>
 
-        {/* Each role as a card on white surface for internal contrast */}
-        <div className="space-y-5 md:space-y-6">
+        {/* Soft Apple-style blocks separated by gap */}
+        <div className="space-y-4 md:space-y-5">
           {experience.map((exp, i) => (
             <Reveal key={exp.company}>
-              <article className="bg-surface border border-ink-200/70 p-6 md:p-10 hover:border-ink-300 transition-colors">
-                <div className="grid md:grid-cols-12 gap-6 md:gap-10">
-                  {/* Left: logo + meta */}
+              <article className="bg-surface rounded-2xl md:rounded-3xl p-7 md:p-12 transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(10,10,10,0.04)]">
+                <div className="grid md:grid-cols-12 gap-8 md:gap-12">
+                  {/* Left: identity (logo + meta) */}
                   <div className="md:col-span-4">
-                    {exp.logo && (
-                      <div className="relative h-16 md:h-20 w-full max-w-[220px] mb-6 flex items-center">
+                    {/* Uniform logo frame — same dimensions for every company,
+                        logo is centered and constrained by max-width/height */}
+                    <div className="h-16 w-full max-w-[180px] mb-7 flex items-center justify-center">
+                      <div className="relative w-full h-full">
                         <Image
                           src={exp.logo}
                           alt={`${exp.company} logo`}
-                          width={220}
-                          height={80}
-                          className="object-contain object-left max-h-full w-auto"
+                          fill
+                          sizes="180px"
+                          className="object-contain object-center"
                           priority={i === 0}
                         />
                       </div>
-                    )}
+                    </div>
 
-                    <div className="eyebrow text-accent mb-4">
-                      {String(i + 1).padStart(2, "0")} / {exp.period}
+                    <div className="eyebrow text-accent mb-3">
+                      {exp.period}
                     </div>
-                    <div className="text-2xl md:text-3xl font-medium tracking-tight text-ink leading-tight">
-                      {exp.company}
-                    </div>
-                    <div className="mt-2 text-[15px] text-ink-700 font-medium">
+                    <div className="text-[15px] font-medium text-ink leading-snug">
                       {exp.role}
                     </div>
-                    <div className="mt-1 text-sm text-ink-500">{exp.location}</div>
+                    <div className="mt-1 text-sm text-ink-500">
+                      {exp.location}
+                    </div>
 
                     {/* Stack chips */}
                     <div className="mt-6 flex flex-wrap gap-1.5">
                       {exp.stack.map((s) => (
                         <span
                           key={s}
-                          className="font-mono text-[11px] tracking-snug text-ink-600 bg-surface-alt border border-ink-200 px-2.5 py-1"
+                          className="font-mono text-[11px] tracking-snug text-ink-600 bg-surface-alt border border-ink-200 px-2.5 py-1 rounded-full"
                         >
                           {s}
                         </span>
@@ -73,25 +74,24 @@ export function Experience() {
                     </div>
                   </div>
 
-                  {/* Right: summary + highlights */}
+                  {/* Right: narrative content */}
                   <div className="md:col-span-8">
-                    <p className="text-base md:text-lg text-ink-700 leading-relaxed mb-6 border-l-2 border-accent/60 pl-5 italic">
+                    {/* Lead — Apple-style large statement */}
+                    <p className="text-xl md:text-2xl text-ink leading-snug tracking-snug font-medium mb-8 max-w-2xl">
                       {exp.summary}
                     </p>
 
-                    <ul className="space-y-0">
+                    {/* Highlights — hairlines, no bullets */}
+                    <div className="space-y-0">
                       {exp.highlights.map((h, hi) => (
-                        <li
+                        <div
                           key={hi}
-                          className="flex gap-5 py-3.5 border-b border-ink-100 last:border-b-0 text-[14px] md:text-[15px] text-ink-700 leading-relaxed"
+                          className="py-3.5 border-t border-ink-100 last:border-b-0 text-[14px] md:text-[15px] text-ink-700 leading-relaxed first:pt-0 first:border-t-0"
                         >
-                          <span className="font-mono text-[11px] text-ink-400 pt-1.5 flex-shrink-0">
-                            {String(hi + 1).padStart(2, "0")}
-                          </span>
-                          <span>{h}</span>
-                        </li>
+                          {h}
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </article>

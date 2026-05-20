@@ -1,5 +1,5 @@
 import { Nav } from "@/components/nav";
-import { Hero } from "@/components/hero";
+import { Hero, Metrics } from "@/components/hero";
 import { Experience } from "@/components/experience";
 import { Education } from "@/components/education";
 import { Stack } from "@/components/stack";
@@ -10,6 +10,7 @@ export default function Home() {
     <main className="relative">
       <Nav />
       <Hero />
+      <Metrics />
       <Experience />
       <Education />
       <Stack />
