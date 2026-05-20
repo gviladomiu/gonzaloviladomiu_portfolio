@@ -61,7 +61,7 @@ export const experience = [
   },
   {
     company: "Unitronics",
-    logo: "/logos/unitronics.svg",
+    logo: "/logos/unitronics.png",
     role: "Network Analyst",
     period: "Jan 2018 — Apr 2022",
     location: "Barcelona, Spain",
