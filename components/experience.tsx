@@ -37,13 +37,12 @@ export function Experience() {
                   {/* Left: logo + meta */}
                   <div className="md:col-span-4">
                     {exp.logo && (
-                      <div className="relative h-16 md:h-20 w-full max-w-[220px] mb-6 flex items-center">
+                      <div className="relative h-10 w-44 mb-6">
                         <Image
                           src={exp.logo}
                           alt={`${exp.company} logo`}
-                          width={220}
-                          height={80}
-                          className="object-contain object-left max-h-full w-auto"
+                          fill
+                          className="object-contain object-left mix-blend-multiply"
                           priority={i === 0}
                         />
                       </div>
