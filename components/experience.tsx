@@ -13,10 +13,10 @@ import { Reveal } from "@/components/reveal";
   Keyed by company name → className string for the logo wrapper.
 */
 const logoSize: Record<string, string> = {
-  "PUIG":           "h-14 max-w-[150px]",     // Square isotipo+wordmark, medium detail
-  "Deloitte":       "h-12 max-w-[150px]",     // Square, heavy wordmark fills most of it
-  "Unitronics":     "h-20 max-w-[160px]",     // PNG 1.25:1, isotipo + wordmark + tagline
-  "Fira Barcelona": "h-20 max-w-[160px]",     // Square, isotipo + wordmark stacked
+  "PUIG":           "h-16 max-w-[150px]",     // Square isotipo+wordmark, medium detail
+  "Deloitte":       "h-10 max-w-[150px]",     // Square, heavy wordmark fills most of it
+  "Unitronics":     "h-22 max-w-[160px]",     // PNG 1.25:1, isotipo + wordmark + tagline
+  "Fira Barcelona": "h-22 max-w-[160px]",     // Square, isotipo + wordmark stacked
 };
 
 const defaultSize = "h-14 max-w-[140px]";
