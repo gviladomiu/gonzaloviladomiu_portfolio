@@ -30,14 +30,15 @@ export function Experience() {
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <Reveal>
-          <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
+          {/* Añadido md:gap-12 para igualar el gap de las tarjetas inferiores */}
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-16 md:mb-20">
             <div className="md:col-span-4">
               <div className="eyebrow mb-3">Experience</div>
               <h2 className="h-section text-ink">Trajectory</h2>
             </div>
 
-            {/* Ajustado aquí: col-span-8 y col-start-5 para moverlo más a la izquierda */}
-            <div className="md:col-span-8 md:col-start-5">
+            {/* Eliminado el md:col-start-* para que fluya naturalmente como en las cards */}
+            <div className="md:col-span-8">
               <p className="text-base md:text-lg text-ink-700 leading-relaxed max-w-xl">
                 Ten years across four organizations — from operating networks at
                 Mobile World Congress, to delivering CRM and digital transformation
