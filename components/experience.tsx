@@ -100,16 +100,17 @@ export function Experience() {
                         {exp.summary}
                       </p>
 
-                      {/* Highlights — hairlines, no bullets */}
-                      <div className="space-y-0">
-                        {exp.highlights.map((h, hi) => (
-                          <div
-                            key={hi}
-                            className="py-3.5 border-t border-ink-100 last:border-b-0 text-[14px] md:text-[15px] text-ink-700 leading-relaxed first:pt-0 first:border-t-0"
-                          >
-                            {h}
-                          </div>
-                        ))}
+                   {/* Highlights — hairlines, no bullets */}
+<div className="space-y-0">
+  {exp.highlights.map((h, hi) => (
+    <div
+      key={hi}
+      className="py-3.5 border-t border-ink-100 last:border-b-0 text-[14px] md:text-[15px] text-ink-700 leading-relaxed first:pt-0 first:border-t-0"
+    >
+      {h}
+    </div>
+  ))}
+</div>
                       </div>
                     </div>
                   </div>
