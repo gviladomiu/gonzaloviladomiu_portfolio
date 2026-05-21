@@ -4,6 +4,23 @@ import Image from "next/image";
 import { experience } from "@/lib/data";
 import { Reveal } from "@/components/reveal";
 
+/*
+  Per-logo optical sizing.
+  All four logos now have roughly square viewBoxes, but their visual weight
+  (how much "ink" fills the square) varies. We assign each a tailored
+  container height so the perceived size feels uniform across the four cards.
+
+  Keyed by company name → className string for the logo wrapper.
+*/
+const logoSize: Record<string, string> = {
+  "PUIG":           "h-14 max-w-[140px]",     // Square isotipo+wordmark, medium detail
+  "Deloitte":       "h-12 max-w-[150px]",     // Square, heavy wordmark fills most of it
+  "Unitronics":     "h-14 max-w-[140px]",     // PNG 1.25:1, isotipo + wordmark + tagline
+  "Fira Barcelona": "h-14 max-w-[140px]",     // Square, isotipo + wordmark stacked
+};
+
+const defaultSize = "h-14 max-w-[140px]";
+
 export function Experience() {
   return (
     <section
@@ -30,73 +47,80 @@ export function Experience() {
 
         {/* Soft Apple-style blocks separated by gap */}
         <div className="space-y-4 md:space-y-5">
-          {experience.map((exp, i) => (
-            <Reveal key={exp.company}>
-              <article className="bg-surface rounded-2xl md:rounded-3xl p-7 md:p-12 transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(10,10,10,0.04)]">
-                <div className="grid md:grid-cols-12 gap-8 md:gap-12">
-                  {/* Left: identity (logo + meta) */}
-                  <div className="md:col-span-4">
-                    {/* Uniform logo frame — same dimensions for every company,
-                        logo is centered and constrained by max-width/height */}
-                    <div className="h-16 w-full max-w-[180px] mb-7 flex items-center justify-center">
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={exp.logo}
-                          alt={`${exp.company} logo`}
-                          fill
-                          sizes="180px"
-                          className="object-contain object-center"
-                          priority={i === 0}
-                        />
+          {experience.map((exp, i) => {
+            const sizeClass = logoSize[exp.company] || defaultSize;
+
+            return (
+              <Reveal key={exp.company}>
+                <article className="bg-surface rounded-2xl md:rounded-3xl p-7 md:p-12 transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(10,10,10,0.04)]">
+                  <div className="grid md:grid-cols-12 gap-8 md:gap-12">
+                    {/* Left: identity (logo + meta) */}
+                    <div className="md:col-span-4">
+                      {/* Per-logo optical frame — sized individually for visual balance */}
+                      <div className={`${sizeClass} w-full mb-7 flex items-center`}>
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            fill
+                            sizes="150px"
+                            className="object-contain object-left"
+                            priority={i === 0}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="text-lg font-medium tracking-snug text-ink mb-2">
+                        {exp.company}
+                      </div>
+
+                      <div className="eyebrow text-accent mb-3">
+                        {exp.period}
+                      </div>
+                      <div className="text-[15px] font-medium text-ink-700 leading-snug">
+                        {exp.role}
+                      </div>
+                      <div className="mt-1 text-sm text-ink-500">
+                        {exp.location}
+                      </div>
+
+                      {/* Stack chips */}
+                      <div className="mt-6 flex flex-wrap gap-1.5">
+                        {exp.stack.map((s) => (
+                          <span
+                            key={s}
+                            className="font-mono text-[11px] tracking-snug text-ink-600 bg-surface-alt border border-ink-200 px-2.5 py-1 rounded-full"
+                          >
+                            {s}
+                          </span>
+                        ))}
                       </div>
                     </div>
 
-                    <div className="eyebrow text-accent mb-3">
-                      {exp.period}
-                    </div>
-                    <div className="text-[15px] font-medium text-ink leading-snug">
-                      {exp.role}
-                    </div>
-                    <div className="mt-1 text-sm text-ink-500">
-                      {exp.location}
-                    </div>
+                    {/* Right: narrative content */}
+                    <div className="md:col-span-8">
+                      {/* Lead — Apple-style large statement */}
+                      <p className="text-xl md:text-2xl text-ink leading-snug tracking-snug font-medium mb-8 max-w-2xl">
+                        {exp.summary}
+                      </p>
 
-                    {/* Stack chips */}
-                    <div className="mt-6 flex flex-wrap gap-1.5">
-                      {exp.stack.map((s) => (
-                        <span
-                          key={s}
-                          className="font-mono text-[11px] tracking-snug text-ink-600 bg-surface-alt border border-ink-200 px-2.5 py-1 rounded-full"
-                        >
-                          {s}
-                        </span>
-                      ))}
+                      {/* Highlights — hairlines, no bullets */}
+                      <div className="space-y-0">
+                        {exp.highlights.map((h, hi) => (
+                          <div
+                            key={hi}
+                            className="py-3.5 border-t border-ink-100 last:border-b-0 text-[14px] md:text-[15px] text-ink-700 leading-relaxed first:pt-0 first:border-t-0"
+                          >
+                            {h}
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-
-                  {/* Right: narrative content */}
-                  <div className="md:col-span-8">
-                    {/* Lead — Apple-style large statement */}
-                    <p className="text-xl md:text-2xl text-ink leading-snug tracking-snug font-medium mb-8 max-w-2xl">
-                      {exp.summary}
-                    </p>
-
-                    {/* Highlights — hairlines, no bullets */}
-                    <div className="space-y-0">
-                      {exp.highlights.map((h, hi) => (
-                        <div
-                          key={hi}
-                          className="py-3.5 border-t border-ink-100 last:border-b-0 text-[14px] md:text-[15px] text-ink-700 leading-relaxed first:pt-0 first:border-t-0"
-                        >
-                          {h}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          ))}
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
