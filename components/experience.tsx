@@ -13,9 +13,9 @@ import { Reveal } from "@/components/reveal";
   Keyed by company name → className string for the logo wrapper.
 */
 const logoSize: Record<string, string> = {
-  "PUIG":           "h-16 max-w-[150px]",
-  "Deloitte":       "h-8 max-w-[150px]",
-  "Unitronics":     "h-[88px] max-w-[160px]",
+  PUIG: "h-16 max-w-[150px]",
+  Deloitte: "h-8 max-w-[150px]",
+  Unitronics: "h-[88px] max-w-[160px]",
   "Fira Barcelona": "h-[88px] max-w-[160px]",
 };
 
@@ -35,6 +35,7 @@ export function Experience() {
               <div className="eyebrow mb-3">Experience</div>
               <h2 className="h-section text-ink">Trajectory</h2>
             </div>
+
             <div className="md:col-span-7 md:col-start-6">
               <p className="text-base md:text-lg text-ink-700 leading-relaxed max-w-xl">
                 Ten years across four organizations — from operating networks at
@@ -57,7 +58,9 @@ export function Experience() {
                     {/* Left: identity (logo + meta) */}
                     <div className="md:col-span-4">
                       {/* Per-logo optical frame — sized individually for visual balance */}
-                      <div className={`${sizeClass} w-full mb-7 flex items-center`}>
+                      <div
+                        className={`${sizeClass} w-full mb-7 flex items-center`}
+                      >
                         <div className="relative w-full h-full">
                           <Image
                             src={exp.logo}
@@ -73,9 +76,11 @@ export function Experience() {
                       <div className="eyebrow text-accent mb-3">
                         {exp.period}
                       </div>
+
                       <div className="text-[15px] font-medium text-ink-700 leading-snug">
                         {exp.role}
                       </div>
+
                       <div className="mt-1 text-sm text-ink-500">
                         {exp.location}
                       </div>
@@ -100,17 +105,23 @@ export function Experience() {
                         {exp.summary}
                       </p>
 
-                   {/* Highlights — hairlines, no bullets */}
-<div className="space-y-0">
-  {exp.highlights.map((h, hi) => (
-    <div
-      key={hi}
-      className="py-3.5 border-t border-ink-100 last:border-b-0 text-[14px] md:text-[15px] text-ink-700 leading-relaxed first:pt-0 first:border-t-0"
-    >
-      {h}
-    </div>
-  ))}
-</div>
+                      {/* Highlights — numbered list */}
+                      <div className="space-y-0">
+                        {exp.highlights.map((h, hi) => (
+                          <div
+                            key={hi}
+                            className="grid grid-cols-[42px_1fr] gap-4 py-3.5 border-t border-ink-100 first:pt-0 first:border-t-0"
+                          >
+                            <div className="font-mono text-[12px] tracking-snug text-accent pt-0.5">
+                              {String(hi + 1).padStart(2, "0")}
+                            </div>
+
+                            <div className="text-[14px] md:text-[15px] text-ink-700 leading-relaxed">
+                              {h}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </article>
