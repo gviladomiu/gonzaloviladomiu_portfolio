@@ -11,13 +11,18 @@ export function Stack() {
     >
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
-            <div className="md:col-span-4">
+          {/* Ajustado el gap a md:gap-12 para igualar a la sección Experience */}
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-16 md:mb-20">
+            {/* Reducido a col-span-3 */}
+            <div className="md:col-span-3">
               <div className="eyebrow mb-3">Stack</div>
               <h2 className="h-section text-ink">Tools &amp; competencies</h2>
             </div>
-            <div className="md:col-span-7 md:col-start-6">
-              <p className="text-base md:text-lg text-ink-700 leading-relaxed max-w-xl">
+            
+            {/* Aumentado a col-span-9, añadido md:pt-8 para bajarlo a la altura del título */}
+            <div className="md:col-span-9 md:pt-8">
+              {/* Eliminado max-w-xl para que se estire a la derecha */}
+              <p className="text-base md:text-lg text-ink-700 leading-relaxed">
                 A working stack built across platforms, cloud, data governance and
                 delivery — the technologies and disciplines I&apos;ve operated with at depth.
               </p>
@@ -49,14 +54,18 @@ export function Stack() {
         </Reveal>
 
         <Reveal>
-          <div className="mt-20 md:mt-24 grid md:grid-cols-12 gap-8">
-            <div className="md:col-span-4">
+          {/* Añadido md:gap-12 para mantener consistencia con el bloque superior */}
+          <div className="mt-20 md:mt-24 grid md:grid-cols-12 gap-8 md:gap-12">
+            {/* Reducido a col-span-3 para alinear con el encabezado superior */}
+            <div className="md:col-span-3">
               <div className="eyebrow mb-3">Certifications</div>
               <p className="text-sm text-ink-500 max-w-xs leading-relaxed">
                 Salesforce stack, privacy, analytics and networking foundations.
               </p>
             </div>
-            <div className="md:col-span-7 md:col-start-6">
+            
+            {/* Aumentado a col-span-9 y eliminado md:col-start-6 para alineación perfecta */}
+            <div className="md:col-span-9">
               <div className="flex flex-wrap gap-2">
                 {certifications.map((c) => (
                   <span
