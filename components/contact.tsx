@@ -12,13 +12,18 @@ export function Contact() {
     >
       <div className="max-w-6xl mx-auto">
         <Reveal>
-          <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
-            <div className="md:col-span-4">
+          {/* Ajustado el gap a md:gap-12 para mantener la consistencia */}
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-16 md:mb-20">
+            {/* Reducido a col-span-3 */}
+            <div className="md:col-span-3">
               <div className="eyebrow text-ink-400 mb-3">Contact</div>
               <h2 className="h-section">Get in touch</h2>
             </div>
-            <div className="md:col-span-7 md:col-start-6">
-              <p className="text-base md:text-lg text-ink-200 leading-relaxed max-w-xl">
+            
+            {/* Aumentado a col-span-9 y añadido md:pt-8 para alinear con el título */}
+            <div className="md:col-span-9 md:pt-8">
+              {/* Eliminado max-w-xl para aprovechar todo el ancho a la derecha */}
+              <p className="text-base md:text-lg text-ink-200 leading-relaxed">
                 The most reliable channels are below. For new conversations, email is
                 preferred.
               </p>
