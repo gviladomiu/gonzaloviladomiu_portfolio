@@ -36,7 +36,8 @@ export function Experience() {
               <h2 className="h-section text-ink">Trajectory</h2>
             </div>
 
-            <div className="md:col-span-7 md:col-start-6">
+            {/* Ajustado aquí: col-span-8 y col-start-5 para moverlo más a la izquierda */}
+            <div className="md:col-span-8 md:col-start-5">
               <p className="text-base md:text-lg text-ink-700 leading-relaxed max-w-xl">
                 Ten years across four organizations — from operating networks at
                 Mobile World Congress, to delivering CRM and digital transformation
@@ -110,10 +111,8 @@ export function Experience() {
                         {exp.highlights.map((h, hi) => (
                           <div
                             key={hi}
-                            // Añadido items-start para forzar la alineación superior
                             className="grid grid-cols-[42px_1fr] items-start gap-4 py-3.5 border-t border-ink-100 first:pt-0 first:border-t-0"
                           >
-                            {/* Ajustado el pt a pt-1 para que cuadre perfecto con la altura de la primera línea de texto */}
                             <div className="font-mono text-[11px] text-ink-400 pt-1">
                               {String(hi + 1).padStart(2, "0")}
                             </div>
