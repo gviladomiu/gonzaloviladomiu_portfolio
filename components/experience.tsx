@@ -112,7 +112,8 @@ export function Experience() {
                             key={hi}
                             className="grid grid-cols-[42px_1fr] gap-4 py-3.5 border-t border-ink-100 first:pt-0 first:border-t-0"
                           >
-                            <div className="font-mono text-[12px] tracking-snug text-accent pt-0.5">
+                            {/* Números con el formato de la v6: text-[11px] y text-ink-400 */}
+                            <div className="font-mono text-[11px] text-ink-400 pt-1.5">
                               {String(hi + 1).padStart(2, "0")}
                             </div>
 
