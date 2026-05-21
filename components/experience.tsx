@@ -110,10 +110,11 @@ export function Experience() {
                         {exp.highlights.map((h, hi) => (
                           <div
                             key={hi}
-                            className="grid grid-cols-[42px_1fr] gap-4 py-3.5 border-t border-ink-100 first:pt-0 first:border-t-0"
+                            // Añadido items-start para forzar la alineación superior
+                            className="grid grid-cols-[42px_1fr] items-start gap-4 py-3.5 border-t border-ink-100 first:pt-0 first:border-t-0"
                           >
-                            {/* Números con el formato de la v6: text-[11px] y text-ink-400 */}
-                            <div className="font-mono text-[11px] text-ink-400 pt-1.5">
+                            {/* Ajustado el pt a pt-1 para que cuadre perfecto con la altura de la primera línea de texto */}
+                            <div className="font-mono text-[11px] text-ink-400 pt-1">
                               {String(hi + 1).padStart(2, "0")}
                             </div>
 
