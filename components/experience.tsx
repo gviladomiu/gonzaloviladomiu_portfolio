@@ -14,7 +14,7 @@ import { Reveal } from "@/components/reveal";
 */
 const logoSize: Record<string, string> = {
   "PUIG":           "h-16 max-w-[150px]",
-  "Deloitte":       "h-10 max-w-[150px]",
+  "Deloitte":       "h-8 max-w-[150px]",
   "Unitronics":     "h-[88px] max-w-[160px]",
   "Fira Barcelona": "h-[88px] max-w-[160px]",
 };
