@@ -1,6 +1,6 @@
 "use client";
 
-import { profile } from "@/lib/data";
+import { profile, metrics } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 
 export function Hero() {
@@ -10,28 +10,28 @@ export function Hero() {
       className="relative pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-10 grid-bg"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Status line */}
+        {/* Quiet status line — no pulsing dot, no inbound signaling */}
         <div
-          className="eyebrow flex items-center gap-3 mb-10 md:mb-14 animate-fade-in"
+          className="eyebrow mb-10 md:mb-14 animate-fade-in"
           style={{ animationDelay: "60ms", opacity: 0 }}
         >
-          <span className="inline-block w-2 h-2 rounded-full bg-accent" />
-          <span>Currently at PUIG · Barcelona · Open to inbound</span>
+          Currently at PUIG · Barcelona
         </div>
 
-        {/* Main headline — factual identifier */}
+        {/* Direct, declarative headline */}
         <h1
           className="h-display text-ink max-w-4xl animate-fade-up"
           style={{ animationDelay: "120ms", opacity: 0 }}
         >
           Gonzalo Viladomiu.
           <br />
-          <span className="text-ink-500">Technology Manager —</span>
+          Technology Manager at PUIG.
           <br />
-          consumer engagement, data, AI.
+          <span className="text-ink-500">
+            Consumer engagement, data and AI.
+          </span>
         </h1>
 
-        {/* Factual one-liner */}
         <p
           className="mt-10 md:mt-14 text-lg md:text-xl text-ink-700 max-w-2xl leading-relaxed animate-fade-up"
           style={{ animationDelay: "240ms", opacity: 0 }}
@@ -39,14 +39,21 @@ export function Hero() {
           {profile.about}
         </p>
 
-        {/* Actions */}
+        {/* Trajectory line — explicit CIO orientation, kept understated */}
+        <p
+          className="mt-6 text-sm md:text-base text-ink-500 max-w-2xl leading-relaxed animate-fade-up"
+          style={{ animationDelay: "300ms", opacity: 0 }}
+        >
+          Building toward CIO across data, AI and consumer technology.
+        </p>
+
         <div
           className="mt-10 flex flex-wrap gap-3 animate-fade-up"
           style={{ animationDelay: "360ms", opacity: 0 }}
         >
           <a href="#experience" className="btn">
             View experience
-            <ArrowUpRight className="w-4 h-4" />
+            <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
           </a>
           <a
             href="/cv-gonzalo-viladomiu.pdf"
@@ -57,29 +64,33 @@ export function Hero() {
             Download CV
           </a>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        {/* Identifier grid — factual data points */}
-        <div
-          className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 border-t border-ink-100 animate-fade-up"
-          style={{ animationDelay: "480ms", opacity: 0 }}
-        >
-          {[
-            { label: "Based in", value: "Barcelona" },
-            { label: "Years in tech", value: "~10" },
-            { label: "Current focus", value: "Data · AI · CRM" },
-            { label: "Work auth.", value: "EU" },
-          ].map((d, i) => (
+// Metrics band — surfaced as a standalone block right after the hero
+export function Metrics() {
+  return (
+    <section
+      className="relative bg-ink text-surface px-6 md:px-10 py-14 md:py-20"
+      aria-labelledby="metrics-heading"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div id="metrics-heading" className="eyebrow text-ink-400 mb-8 md:mb-10">
+          By the numbers
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-ink-700">
+          {metrics.map((m, i) => (
             <div
               key={i}
-              className={`py-7 md:py-9 px-0 md:px-4 ${
-                i < 3 ? "md:border-r border-ink-100" : ""
-              } ${i === 1 ? "border-r md:border-r border-ink-100" : ""} ${
-                i < 2 ? "border-r md:border-r-0 md:border-r border-ink-100" : ""
-              }`}
+              className="bg-ink p-6 md:p-8 flex flex-col justify-between min-h-[140px]"
             >
-              <div className="eyebrow mb-2">{d.label}</div>
-              <div className="text-xl md:text-2xl font-medium tracking-snug text-ink">
-                {d.value}
+              <div className="text-4xl md:text-6xl font-medium tracking-tighter text-surface leading-none">
+                {m.value}
+              </div>
+              <div className="mt-4 text-sm md:text-base text-ink-300 leading-snug max-w-[18ch]">
+                {m.label}
               </div>
             </div>
           ))}
