@@ -30,14 +30,17 @@ export function Experience() {
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <Reveal>
-          <div className="grid md:grid-cols-12 gap-8 mb-16 md:mb-20">
-            <div className="md:col-span-4">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12 mb-16 md:mb-20">
+            {/* Reducido a col-span-3 para que el texto empiece más a la izquierda */}
+            <div className="md:col-span-3">
               <div className="eyebrow mb-3">Experience</div>
               <h2 className="h-section text-ink">Trajectory</h2>
             </div>
 
-            <div className="md:col-span-7 md:col-start-6">
-              <p className="text-base md:text-lg text-ink-700 leading-relaxed max-w-xl">
+            {/* Aumentado a col-span-9 y añadido md:pt-8 para bajarlo a la altura del título */}
+            <div className="md:col-span-9 md:pt-8">
+              {/* Eliminado max-w-xl para que el texto se estire por completo hacia la derecha */}
+              <p className="text-base md:text-lg text-ink-700 leading-relaxed">
                 Ten years across four organizations — from operating networks at
                 Mobile World Congress, to delivering CRM and digital transformation
                 at Deloitte, to leading consumer engagement technology at PUIG.
@@ -110,10 +113,9 @@ export function Experience() {
                         {exp.highlights.map((h, hi) => (
                           <div
                             key={hi}
-                            className="grid grid-cols-[42px_1fr] gap-4 py-3.5 border-t border-ink-100 first:pt-0 first:border-t-0"
+                            className="grid grid-cols-[42px_1fr] items-start gap-4 py-3.5 border-t border-ink-100 first:pt-0 first:border-t-0"
                           >
-                            {/* Números con el formato de la v6: text-[11px] y text-ink-400 */}
-                            <div className="font-mono text-[11px] text-ink-400 pt-1.5">
+                            <div className="font-mono text-[11px] text-ink-400 pt-1">
                               {String(hi + 1).padStart(2, "0")}
                             </div>
 
