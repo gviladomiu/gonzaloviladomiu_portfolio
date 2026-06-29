@@ -12,15 +12,44 @@ export const metadata: Metadata = {
     "Technology Manager at PUIG. Consumer engagement, data governance and digital transformation across global luxury beauty. Building toward CIO.",
   authors: [{ name: "Gonzalo Viladomiu Claraso" }],
   robots: { index: true, follow: true },
-  keywords: [
+keywords: [
+    // Identidad y Marca Personal
     "Gonzalo Viladomiu",
+    "Gonzalo Viladomiu Claraso",
+    "Portfolio",
+    
+    // Roles Principales
     "Technology Manager",
-    "PUIG",
+    "IT Project Manager",
+    "Product Manager",
+    
+    // Sector y Especialidad
     "Consumer Engagement",
-    "Data Governance",
     "Digital Transformation",
-    "CIO",
+    "Luxury Beauty Tech",
+    "PUIG",
+    "Loyalty Programs",
+    "CRM",
+    
+    // Competencias Técnicas y de Datos
+    "Data Governance",
+    "Data Quality",
+    "SQL",
+    "BigQuery",
+    
+    // Herramientas y Metodologías
+    "Agile",
+    "Jira",
+    "Confluence",
+    
+    // Intereses Tecnológicos y de Diseño paralelos
+    "Artificial Intelligence",
+    "UX Design",
+    "Product Design",
+    
+    // Ubicación (Clave para búsquedas locales de talento)
     "Barcelona",
+    "Spain"
   ],
   openGraph: {
     title: "Gonzalo Viladomiu — Technology Manager",
@@ -31,9 +60,6 @@ export const metadata: Metadata = {
     locale: "en_GB",
     type: "website",
   },
-  // If you verified Search Console via DNS already, you can leave this out.
-  // To verify by meta tag instead, paste your code here:
-  // verification: { google: "YOUR_CODE" },
 };
 
 // JSON-LD structured data — tells Google this site is a person's professional identity
